@@ -1,0 +1,109 @@
+{% load static %}
+
+<!--Site Footer Start-->
+<footer class="site-footer">
+    <div class="site-footer__top">
+        <div class="site-footer__shape-1 float-bob-x">
+            <img src="assets/images/shapes/site-footer-shape-1.png" alt="">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="footer-widget__column footer-widget__about">
+                        <div class="footer-widget__logo">
+                            <a href="#"><img src="{% static 'images/resources/footer-logo.png' %}" alt=""></a>
+                        </div>
+                        <div class="footer-widget__about-text-box">
+                            <p class="footer-widget__about-text">We close critical gap in supporting financially strained students across various universities.</p>
+                        </div>
+                        <form class="footer-widget__subscribe-box">
+                            <div class="footer-widget__subscribe-input-box">
+                                <input type="email" placeholder="Email address" name="email">
+                                <button type="submit" class="footer-widget__subscribe-btn"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="footer-widget__column footer-widget__Explore">
+                        <div class="footer-widget__title-box">
+                            <h3 class="footer-widget__title">Explore</h3>
+                        </div>
+                        <ul class="footer-widget__Explore-list list-unstyled">
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="#">How it Works</a></li>
+                            <li><a href="{% url 'contact-us' %}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="footer-widget__column footer-widget__Fundraising">
+                        <div class="footer-widget__title-box">
+                            <h3 class="footer-widget__title">Fundraising</h3>
+                        </div>
+                        <ul class="footer-widget__Explore-list list-unstyled">
+                            <li><a href="#">Students</a></li>
+                            <li><a href="#">Universities.</a></li>
+                            <li><a href="#">Success Stories</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="footer-widget__column footer-widget__Contact">
+                        <div class="footer-widget__title-box">
+                            <h3 class="footer-widget__title">Contact</h3>
+                        </div>
+                        <ul class="footer-widget__Contact-list list-unstyled">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-telephone"></span>
+                                </div>
+                                <div class="text">
+                                    <p><a href="tel:+2348103858419">+234 810 385 8419</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-email"></span>
+                                </div>
+                                <div class="text">
+                                    <p><a href="mailto:needhelp@qrowd.com">needhelp@qrowd.com, 
+                                        info@qrowd.com</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-pin"></span>
+                                </div>
+                                <div class="text">
+                                    <p>Nile University of Nigeria.
+                                        2C93+J95, Nile St, Abuja 900108,
+                                        Federal Capital Territory</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="site-footer__social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer__bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="site-footer__bottom-inner">
+                        <p class="site-footer__bottom-text">&copy; Copyright  {% now "Y" %} by <a href="#">Qrowd.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Site Footer End-->

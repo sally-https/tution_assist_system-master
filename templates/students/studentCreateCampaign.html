@@ -1,0 +1,51 @@
+{% extends "students/student-base.html" %}
+{% load static %}
+
+
+{% block student_content %}
+<div class="col-xl-8 col-lg-7">
+    <span class="fs-4">Create Campaign</span>
+    <hr>
+    {% include 'includes/alerts.html' %}
+    <form method="POST" action="{% url 'studentCreateCampaign' %}" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xl-12">
+                <label>Your Credentials*</label>
+                <div class="contact-form__input-box">
+                    {{form.student_credentials}}
+                </div>
+                <label class="text-danger">{{ form.student_credentials.errors }}</label>
+            </div>
+            <div class="col-xl-12">
+                <label>Amount Needed (&#8358;)*</label>
+                <div class="contact-form__input-box">
+                    {{form.financial_need}}
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="contact-form__input-box">
+                    <label>Compelling Description*</label>
+                    <div class="contact-form__input-box">
+                        {{form.campaign_message}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="contact-form__input-box">
+                    <label>Deadline*</label>
+                    {{form.payment_deadline}}
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="contact-form__btn-box">
+                    <button type="submit" class="thm-btn contact-form__btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

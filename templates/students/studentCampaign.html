@@ -1,0 +1,109 @@
+{% extends "students/student-base.html" %}
+{% load static %}
+
+
+{% block student_content %}
+<div class="col-xl-8 col-lg-7">
+    <span class="fs-4">My Campaign</span>
+    <hr>
+    {% include 'includes/alerts.html' %}
+
+    <div class="event-details__sidebar" style="width: 100%;">
+        <div class="event-details__details-box">
+            {% if student.is_verified %}
+            <h5 class="event-details__details-box-title">Campaign Details</h5>
+                {% if student_campaign %}
+                <ul class="list-unstyled event-details__details-box-list">
+                    {% comment %} {% for c in student_campaign %} {% endcomment %}
+                    <li>
+                        <div class="left">
+                            <p>Full Name: &nbsp;</p>
+                        </div>
+                        <div class="right">
+                            <p>&nbsp; {{ student_campaign.user.full_name }}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Student ID: &nbsp;</p>
+                        </div>
+                        <div class="right">
+                            <p>&nbsp; {{ student_campaign.user.student_id }}</p>
+                        </div>
+                    </li>
+                    {% comment %} {% endfor %} {% endcomment %}
+                    <li>
+                        <div class="left">
+                            <p>University: &nbsp;</p>
+                        </div>
+                        <div class="right">
+                            <p>&nbsp; {{ student_campaign.user.university }}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Amount Needed: &nbsp;</p>
+                        </div>
+                        <div class="right">
+                            <p>&nbsp; &#8358;{{student_campaign.financial_need}}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Amount Raised: &nbsp;</p>
+                        </div>
+                        <div class="right">
+                            <p>&nbsp; &#8358;{{student_campaign.amount_raised}}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Deadline:</p>
+                        </div>
+                        <div class="right">
+                            <p class="clr-primary">&nbsp; {{ student_campaign.payment_deadline }}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Campaign Status: &nbsp;</p>
+                        </div>
+                        <div class="right">
+                            <p>&nbsp; {{student_campaign.campaign_status}}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Created On:</p>
+                        </div>
+                        <div class="right">
+                            <p>{{student_campaign.created_at}}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            <p>Compelling description:</p>
+                        </div>
+                        <div class="right">
+                            <p class="clr-base">{{student_campaign.campaign_message}}</p>
+                        </div>
+                    </li>
+                </ul>
+                {% else %}
+                <div class="login-register__warning text-danger">
+                    <strong>You don't have an ongoing Campaign</strong> Click the Button below to create one.
+                </div>
+                <br>
+                <div class="events-list__btn-box">
+                    <a href="{% url 'studentCreateCampaign' %}" class="thm-btn events-list__btn">Create Campaign</a>
+                </div>
+                {% endif %}
+            {% else %}
+            <div class="login-register__warning text-danger">
+                <strong>Your Account is not yet verified by your School</strong> Contact your School Administrator
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

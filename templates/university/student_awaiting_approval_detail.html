@@ -1,0 +1,131 @@
+{% extends "university/university-base.html" %}
+
+{% block title %}Profile{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row">
+          <div class="col">
+             <h3 class="page-title">Student Awaiting Approval</h3>
+             <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Student Awaiting Approval</li>
+             </ul>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-12">
+          <div class="profile-header">
+             <div class="row align-items-center">
+                <div class="col-auto profile-image">
+                   <a href="#">
+                   <img alt="User Image" src="{{ student.profile_picture.url }}">
+                   </a>
+                </div>
+                <div class="col ml-md-n2 profile-user-info">
+                    <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Student ID</p>
+                        <p class="col-sm-9">{{ student.student_id }}</p>
+                     </div>
+                     <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Student Name</p>
+                        <p class="col-sm-9">{{ student.full_name }}</p>
+                     </div>
+                     <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Phone Number</p>
+                        <p class="col-sm-9">{{ student.phone_number }}</p>
+                     </div>
+                     <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Gender</p>
+                        <p class="col-sm-9">{{ student.gender }}</p>
+                     </div>
+                     <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">School Name</p>
+                        <p class="col-sm-9">{{ student.university }}</p>
+                     </div>
+                     <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Department</p>
+                        <p class="col-sm-9">COMPUTER ENGINEERING DEPARTMENT</p>
+                     </div>
+                     <div class="row">
+                        <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
+                        <p class="col-sm-9">{{ student.user.email }}</p>
+                     </div>
+                </div>
+                <div class="col-auto profile-btn">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                     Approve Student Account
+                 </button>
+
+                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccount">
+                     Not Student Delete the Account
+                 </button>
+                </div>
+             </div>
+          </div>
+          
+       </div>
+    </div>
+</div>
+
+
+
+  
+  <!-- Approve Modal -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Approve Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>You are about to Approve <b>{{student.full_name}} ({{student.student_id}}) </b>Account</h5>
+          <h6 class="text-danger">Are you sure {% if student.gender == 'Male' %}he {% else %}she {% endif %} is your Student?</h6>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href="{% url 'approval-student' student.id %}" class="btn btn-primary">
+                Yes Approve
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteAccount" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">Delete Confirmation</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <h5>You are about to Delete <b>{{student.full_name}} ({{student.student_id}}) </b>Account</h5>
+         <h6 class="text-danger">Are you sure {% if student.gender == 'Male' %}he {% else %}she {% endif %} is not your Student! 
+            <br>
+            <i>This Action is irrevesible</i>
+         </h6>
+       </div>
+       <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           <a href="{% url 'delete_student' student.id %}" class="btn btn-danger">
+               Yes Delete
+           </a>
+       </div>
+     </div>
+   </div>
+ </div>
+
+{% endblock content %}

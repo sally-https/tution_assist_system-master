@@ -1,0 +1,79 @@
+{% extends "university/university-base.html" %}
+
+{% block title %}Add Student{% endblock title %}
+
+{% block content %}
+
+    <div class="content container-fluid">
+       <div class="page-header">
+          <div class="row align-items-center">
+             <div class="col">
+                <h3 class="page-title">Edit Students</h3>
+                <ul class="breadcrumb">
+                   <li class="breadcrumb-item"><a href="{% url 'universityStudents' %}">Students</a></li>
+                   <li class="breadcrumb-item active">Edit {{student_id}} Info</li>
+                </ul>
+             </div>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-sm-12">
+             <div class="card">
+                <div class="card-body">
+                   <form method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <div class="row">
+                         <div class="col-12">
+                            <h5 class="form-title"><span>Student Information</span></h5>
+                         </div>
+                         <div class="col-12 col-sm-3">
+                            <div class="form-group">
+                               <label>Student ID</label>
+                               {{student_form.student_id}}
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-9">
+                            <div class="form-group">
+                               <label>Full Name</label>
+                               {{student_form.full_name}}
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Gender</label>
+                               {{student_form.gender}}
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Phone Number</label>
+                               <div>
+                                  {{student_form.phone_number}}
+                               </div>
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Address</label>
+                               {{student_form.address}}
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Student Image</label>
+                               {{student_form.profile_picture}}
+                            </div>
+                         </div>
+                         
+                         <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+{% endblock %}

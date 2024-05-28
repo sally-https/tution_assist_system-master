@@ -1,0 +1,15 @@
+{% extends "contributors/c_base.html" %}
+{% load static %}
+
+
+{% block contributor_content %}
+<div class="col-xl-8 col-lg-7">
+    <span class="fs-4">Dashboard</span>
+    <hr>
+    {% include 'includes/alerts.html' %}
+
+    <h1>My Dashboard</h1>
+    {{user.get_user_type}}
+
+</div>
+{% endblock  %}

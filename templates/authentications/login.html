@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+    </div>
+    <div class="page-header-shape-1 float-bob-x">
+        <img src="{% static 'images/shapes/page-header-shape-1.png' %}" alt="">
+    </div>
+    <div class="page-header-shape-2 float-bob-y">
+        <img src="{% static 'images/shapes/page-header-shape-2.png' %}" alt="">
+    </div>
+    <div class="page-header-shape-3 float-bob-x">
+        <img src="{% static 'images/shapes/page-header-shape-3.png' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Login</li>
+            </ul>
+            <h2>Login Page</h2>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<section class="login-register">
+    <div class="container">
+        <!-- /.login-register__warning -->
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h3 class="login-register__title">Login</h3><!-- /.login-register__title -->
+                {% include 'includes/alerts.html' %}
+                <form class="login-register__form" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="contact-form__input-box">
+                        <input type="text" name="email" placeholder="Username or Email Address*">
+                    </div><!-- /.contact-form__input-box -->
+                    <div class="contact-form__input-box">
+                        <input type="password" name="password" placeholder="Password*">
+                    </div><!-- /.contact-form__input-box -->
+                    <div class="login-register__checkbox">
+                        <input type="checkbox" id="login-register__password">
+                        <label for="login-register__password">Remember Me?</label>
+                    </div><!-- /.contact-form__input-box -->
+                    <div class="login-register__info">
+                        <button type="submit" class="thm-btn login-register__btn">Login</button>
+                        <div class="login-register__text">
+                            <a href="{% url 'forgot_password' %}">Forgot your Password?</a>
+                        </div>
+                        <!-- /.login-register__text -->
+                    </div><!-- /.d-flex -->
+                </form>
+            </div>
+            <!-- /.col-lg-6 -->
+            
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.login-register -->
+
+{% endblock  %}

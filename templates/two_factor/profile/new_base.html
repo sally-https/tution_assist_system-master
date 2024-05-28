@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+{% url 'studentDashboard' as studentDashboard %}
+{% url 'studentProfile' as profile %}
+{% url 'two_factor:profile' as account_security %}
+{% url 'two_factor:backup_tokens' as all_tokens %}
+{% url 'studentEditProfile' as editProfile %}
+{% url 'studentCampaign' as studentCampaign %}
+{% url 'studentCreateCampaign' as createCampaign %}
+
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>My Account</li>
+            </ul>
+           {% if request.path == studentDashboard %}
+            <h2>Dashboard</h2>
+            {% elif request.path == account_security %}
+            <h2>Account Settings</h2>
+            {% elif request.path == profile %}
+            <h2>My Profile</h2>
+            {% elif request.path == all_tokens %}
+            <h2>Backup Tokens</h2>
+            {% elif request.path == editProfile %}
+            <h2>Edit Profile</h2>
+            {% elif request.path == studentCampaign %}
+            <h2>My Campaign</h2>
+            {% elif request.path == createCampaign %}
+            <h2>Create Campaign</h2>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<!--News Details Start-->
+<section class="news-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5">
+                <div class="sidebar">
+                    <div class="sidebar__single sidebar__category">
+                        <ul class="sidebar__category-list list-unstyled">
+                            <li class="{% if request.path == studentDashboard %} active {% endif %}">
+                                <button onclick="history.back()"><span class="icon-left-arrow"></span> Go Back</button>
+                                {% comment %} <a href="{% url 'studentDashboard' %}">Go Back</a> {% endcomment %}
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    
+                </div>
+            </div>
+            {% block student_content %}
+            
+            {% endblock %}
+        </div>
+    </div>
+</section>
+<!--News Details End-->
+
+{% endblock  %}

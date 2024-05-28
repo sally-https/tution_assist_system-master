@@ -1,0 +1,117 @@
+{% extends "two_factor/profile/new_base.html" %}
+{% load static %}
+{% load i18n %}
+{% load two_factor_tags %}
+
+{% block student_content %}
+<div class="col-xl-8 col-lg-7">
+  <span class="fs-4">Account Security Settings</span>
+  <hr>
+
+  <!--Project Details Bottom Start-->
+  <section class="project-details-bottom">
+    <div class="container">
+      {% if default_device %}
+        {% else %}
+        <div class="login-register__warning">
+            <h4><strong class="text-danger">Your Account is not Secure. Please enable <a href="{% url 'two_factor:setup' %}">Two-Factor Authentication</a> to secure it</strong></h4>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="project-details__tab-box tabs-box">
+                    <ul class="tab-buttons clearfix list-unstyled clearfix">
+                        <li data-tab="#status" class="tab-btn active-btn"><span>Status</span></li>
+                        <li data-tab="#one-time_password" class="tab-btn"><span>Two-Factor Auth</span></li>
+                        <li data-tab="#backup_tokens" class="tab-btn"><span>Backup Tokens</span></li>
+                    </ul>
+                    <div class="tabs-content">
+                        <!--tab-->
+                        <div class="tab active-tab" id="status">
+                            <div class="project-details__tab-box-story">
+                              <div class="events-list__inner">
+                                <table class="table table-borderless">
+                                  <tbody>
+                                    <tr class="fs-4 p-5">
+                                      <td colspan="3">Two-Factor Authentication</td>
+                                      {% if default_device %}
+                                      <td class="text-success"> Active</td>
+                                      {% else %}
+                                      <td class="text-danger"> Off</td>
+                                      {% endif %}
+                                      
+                                    </tr>
+                                    <tr class="fs-4 p-5">
+                                      <td colspan="3">Backup Codes</td>
+                                      {% if backup_tokens %}
+                                      <td class="text-success">10 remaining.</td>
+                                      {% else %}
+                                      <td class="text-danger">Off</td>
+                                      {% endif %}
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                        <!--tab-->
+                        <div class="tab " id="one-time_password">
+                            <div class="project-details__faq">
+                              <h2 class="mb-3">{% block title %}{% trans "Account Security" %}{% endblock %}</h2>
+                          
+                              {% if default_device %}
+                                <h4>{% blocktrans with primary=default_device|as_action %}<b>Primary method: </b> {{ primary }}{% endblocktrans %}</h4>
+                      
+                                <h2 class="mt-5">{% trans "Disable Two-Factor Authentication" %}</h2>
+                                <p class="fs-5 mb-2">{% blocktrans trimmed %}However we strongly discourage you to do so, you can
+                                  also disable two-factor authentication for your account.{% endblocktrans %}</p>
+                                <p><a class="btn btn-danger" href="{% url 'two_factor:disable' %}">
+                                  {% trans "Disable Two-Factor Authentication" %}</a></p>
+                              {% else %}
+                                <p>{% blocktrans trimmed %}Two-factor authentication is not enabled for your
+                                  account. Enable two-factor authentication for enhanced account
+                                  security.{% endblocktrans %}</p>
+                                <p><a href="{% url 'two_factor:setup' %}" class="btn btn-primary">
+                                  {% trans "Enable Two-Factor Authentication" %}</a>
+                                </p>
+                              {% endif %}
+                            </div>
+                        </div>
+                        <!--tab-->
+                        <div class="tab " id="backup_tokens">
+                            <div class="project-details__updates">
+                              <h2 class="mb-3">{% trans "Backup Tokens" %}</h2>
+                              {% if default_device %}
+                              <p class="fs-5 mb-2">
+                                {% blocktrans trimmed %}If you don't have any device with you, you can access
+                                  your account using backup tokens.{% endblocktrans %}
+                                {% blocktrans trimmed count counter=backup_tokens %}
+                                  You have only one backup token remaining.
+                                {% plural %}
+                                  You have <b>{{ counter }} backup tokens</b>  remaining.
+                                {% endblocktrans %}
+                              </p>
+                              <p>
+                                <a href="{% url 'two_factor:backup_tokens' %}" class="btn btn-info">{% trans "Show Codes" %}</a>
+                              </p>
+                              {% else %}
+                              <p class="fs-5 mb-4">{% trans "You don't have any backup codes yet. To create Backup Codes you must first Enable Two-Factor Authentication for your account." %}</p>
+                              <p><a href="{% url 'two_factor:setup' %}" class="btn btn-primary">
+                                {% trans "Enable Two-Factor Authentication" %}</a>
+                              </p>
+                              {% endif %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--Project Details Bottom End-->
+
+
+  
+</div>
+{% endblock %}

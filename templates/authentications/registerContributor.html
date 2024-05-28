@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+{% include 'includes/alerts.html' %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}} show-notification" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+           <strong>{{message}}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-headerii-bg.jpg' %})">
+    </div>
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Contributor Registration</li>
+            </ul>
+            <h2>Contributor's Registration Page</h2>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<section class="contact-one">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">Register</span>
+            <h2 class="section-title__title">Contributor Registration</h2>
+        </div>
+        <div class="login-register__warning text-danger">
+            <strong>Note</strong>: This registration page is for Contributors only. <strong>If you are a Student Please Use</strong>:
+            <a href="#"><span> Student Registration Page</span></a>
+        </div>
+        <div class="contact-one__form-box">
+            <form method="post" action="{% url 'registerContributor' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="contact-form__input-box">
+                            <label for="first_name">First Name</label>
+                            {{c_form.full_name}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="last_name">Profile Picture</label>
+                            {{c_form.profile_picture}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="last_name">Phone Number</label>
+                            {{c_form.phone_number}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="email">Email Address</label>
+                            {{form.email}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="username">Username</label>
+                            {{form.username}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="password">Password</label>
+                            {{form.password}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="confirm_password">Confirm Password</label>
+                            {{ form.confirm_password }}
+                        </div>
+                    </div>
+                </div>
+
+                {% if forms.errors %}
+                <div class="login-register__warning">
+                    <ul class="errorlist">
+                        {% for field in form %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <li style="color: red;">{{ error }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <li style="color: red;">{{ form.non_field_errors }}</li>
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="contact-form__btn-box">
+                            <button type="submit" class="thm-btn contact-form__btn">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock  %}
+

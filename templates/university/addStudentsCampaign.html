@@ -1,0 +1,76 @@
+{% extends "university/university-base.html" %}
+
+{% block title %}Add Student{% endblock title %}
+
+{% block content %}
+
+    <div class="content container-fluid">
+       <div class="page-header">
+          <div class="row align-items-center">
+             <div class="col">
+                <h3 class="page-title">Add Campaign for {{ student.full_name }} - ({{student.student_id}})</h3>
+                <ul class="breadcrumb">
+                   <li class="breadcrumb-item"><a href="{% url 'universityStudents' %}">Students</a></li>
+                   <li class="breadcrumb-item active">Add Students Campaign</li>
+                </ul>
+             </div>
+          </div>
+       </div>
+       {% include 'includes/alerts.html' %}
+       <div class="row">
+          <div class="col-sm-12">
+             <div class="card">
+                <div class="card-body">
+                   <form method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <div class="row">
+                        <div class="col-12">
+                            <h5 class="form-title"><span>Student Information</span></h5>
+                        </div>
+                        <div class="col-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Student Credintials</label>
+                                {{form.student_credentials}}
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Amount Need</label>
+                                <div>
+                                {{form.financial_need}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Payment Deadline</label>
+                                <div>
+                                {{form.payment_deadline}}
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12 col-sm-12">
+                            <div class="form-group">
+                               <label>Campaign Compelling Description</label>
+                               <div style="width:100%;">
+                                {{form.campaign_message}}
+                               </div>
+                            </div>
+                         </div>
+                         
+                         <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+{% endblock %}
+
+
+
+

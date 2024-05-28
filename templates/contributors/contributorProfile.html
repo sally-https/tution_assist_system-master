@@ -1,0 +1,58 @@
+{% extends "contributors/c_base.html" %}
+{% load static %}
+
+
+{% block contributor_content %}
+<div class="col-xl-8 col-lg-7">
+    <span class="fs-4 text-uppercase">Profile Settings</span>
+    <hr>
+    {% include 'includes/alerts.html' %}
+    <div class="user-dashboard loader-holder">
+        <div class="user-holder">
+            <form action="{% url 'contributorProfile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="events-list__img">
+                    {% if contributor.profile_picture %}
+                    <img src="{{contributor.profile_picture.url}}" alt="Profile Picture">
+                    {% else %}
+                    <img src="{% static 'images/User.jpg' %}" alt="">
+                    {% endif %}
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-7">
+                        <div class="contact-form__input-box">
+                            <label>Update Profile Picture</label>
+                            {{c_form.profile_picture}}
+                        </div>
+                        <label class="text-danger">{{ c_form.profile_picture.errors }}</label>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label>Full Name *</label>
+                            {{c_form.full_name}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label>Last Name *</label>
+                            {{c_form.phone_number}}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="contact-form__btn-box">
+                                <!-- <input type="submit" class="thm-btn contact-form__btn" value="Send a Message"> -->
+                                <button type="submit" class="thm-btn contact-form__btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+{% endblock %}

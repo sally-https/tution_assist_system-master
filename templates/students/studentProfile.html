@@ -1,0 +1,93 @@
+{% extends "students/student-base.html" %}
+{% load static %}
+
+
+{% block student_content %}
+<div class="col-xl-8 col-lg-7">
+        <span class="fs-4">My Profile</span>
+        <hr>
+        {% include 'includes/alerts.html' %}
+    <div class="events-list__inner">
+        <!--Events List Single Start-->
+        <div class="events-list__single">
+            <div class="events-list__left">
+                <div class="events-list__img">
+                    {% if student.profile_picture %}
+                    <img src="{{student.profile_picture.url}}" alt="Profile Picture">
+                    {% else %}
+                    <img src="{% static 'images/User.jpg' %}" alt="Profile Picture">
+                    {% endif %}
+                </div>
+                <div class="event-details__sidebar" style="width: 100%;">
+                    <div class="event-details__details-box">
+                        <h5 class="event-details__details-box-title">Account Details</h5>
+                        <ul class="list-unstyled event-details__details-box-list">
+                            <li>
+                                <div class="left">
+                                    <p>Full Name: &nbsp;</p>
+                                </div>
+                                <div class="right">
+                                    <p>&nbsp; {{ student.full_name }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    <p>Student ID: &nbsp;</p>
+                                </div>
+                                <div class="right">
+                                    <p>&nbsp; {{ student.student_id }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    <p>University: &nbsp;</p>
+                                </div>
+                                <div class="right">
+                                    <p>&nbsp; {{ student.university.short_name }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    <p>Username: &nbsp;</p>
+                                </div>
+                                <div class="right">
+                                    <p>&nbsp; {{student.user.username}}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    <p>Email:</p>
+                                </div>
+                                <div class="right">
+                                    <p class="clr-primary">&nbsp; {{ student.user.email }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    <p>Phone Number: &nbsp;</p>
+                                </div>
+                                <div class="right">
+                                    <p>&nbsp; {{student.phone_number}}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="left">
+                                    <p>Address:</p>
+                                </div>
+                                <div class="right">
+                                    <p class="clr-base">{{student.address}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="events-list__btn-box">
+                        <a href="{% url 'studentEditProfile' %}" class="thm-btn events-list__btn">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Events List Single End-->
+    </div>
+</div>
+{% endblock %}

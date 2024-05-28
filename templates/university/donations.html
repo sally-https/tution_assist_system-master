@@ -1,0 +1,80 @@
+{% extends "university/university-base.html" %}
+
+
+{% block title %}Donations{% endblock title %}
+
+{% block content %}
+
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Donations</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'universityDashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Donations</li>
+                    </ul>
+                </div>
+                <div class="col-auto text-right float-right ml-auto">
+                    <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i>
+                        Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Donor</th>
+                                        <th>Student</th>
+                                        <th>Amount Donated (&#8358;)</th>
+                                        <th>Date</th>
+                                        <th class="text-right">Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for donation in all_donations %}
+                                    <tr>
+                                        <td>{{donation.user}}</td>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a class="avatar avatar-sm mr-2"><img
+                                                        class="avatar-img rounded-circle"
+                                                        src="{{donation.students.user.profile_picture.url}}"
+                                                        alt="User Image"></a>
+                                                <a>{{donation.students.user.full_name}}</a>
+                                            </h2>
+                                        </td>
+                                        <td>&#8358;{{donation.amount}}</td>
+                                        <td>{{donation.created_at|date:"jS F Y"}}</td>
+                                        {% if donation.verified == True %}
+                                        <td class="text-right">
+                                            <span class="badge badge-success p-2">Completed</span>
+                                        </td>
+                                        {% else %}
+                                        <td class="text-right">
+                                            <span class="badge badge-danger">Not Completed</span>
+                                        </td>
+                                        {% endif %}
+                                        <td>
+                                            <a href="#" class="btn btn-info text-white">Details</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

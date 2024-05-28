@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!--Main Slider Start-->
+<section class="main-slider clearfix">
+    <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+        "effect": "fade",
+        "pagination": {
+        "el": "#main-slider-pagination",
+        "type": "bullets",
+        "clickable": true
+        },
+        "navigation": {
+        "nextEl": "#main-slider__swiper-button-next",
+        "prevEl": "#main-slider__swiper-button-prev"
+        },
+        "autoplay": {
+        "delay": 5000
+        }}'>
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="image-layer" style="background-image: url({% static 'images/student1.jpg' %});"></div>
+                <!-- /.image-layer -->
+                <div class="main-slider__shape-1">
+                    <img src="{% static 'images/shapes/main-slider-shape-1.png' %}" alt="">
+                </div>
+                <div class="main-slider__shape-2">
+                    <img src="{% static 'images/shapes/main-slider-shape-2.png' %}" alt="">
+                </div>
+                <div class="main-slider__shape-3">
+                    <img src="{% static 'images/shapes/main-slider-shape-3.png' %}" alt="">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="main-slider__content">
+                                <p class="main-slider__sub-title">Connecting Donors to Students in Need Across Universities!</p>
+                                <h2 class="main-slider__title">TUITIONASSIST <br> SYSTEM </h2>
+                                <div class="main-slider__btn-box">
+                                    <a href="#compaigns" class="thm-btn main-slider__btn"> 
+                                        Fund a Student</a>
+                                    <a href="{% url 'contact-us' %}" class="main-slider__btn-two">Contant Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-layer" style="background-image: url({% static 'images/student2.jpg' %});"></div>
+                <!-- /.image-layer -->
+                <div class="main-slider__shape-1">
+                    <img src="{% static 'images/shapes/main-slider-shape-1.png' %}" alt="">
+                </div>
+                <div class="main-slider__shape-2">
+                    <img src="{% static 'images/shapes/main-slider-shape-2.png' %}" alt="">
+                </div>
+                <div class="main-slider__shape-3">
+                    <img src="{% static 'images/shapes/main-slider-shape-3.png' %}" alt="">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="main-slider__content">
+                                <p class="main-slider__sub-title">Connecting Donors to Students in Need Across Universities!</p>
+                                <h2 class="main-slider__title">TUITIONASSIST <br> SYSTEM </h2>
+                                <div class="main-slider__btn-box">
+                                    <a href="#compaigns" class="thm-btn main-slider__btn"> 
+                                        Fund a Student</a>
+                                    <a href="{% url 'contact-us' %}" class="main-slider__btn-two">Contant Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-layer" style="background-image: url({% static 'images/student3.jpg' %});"></div>
+                <!-- /.image-layer -->
+                <div class="main-slider__shape-1">
+                    <img src="{% static 'images/shapes/main-slider-shape-1.png' %}" alt="">
+                </div>
+                <div class="main-slider__shape-2">
+                    <img src="{% static 'images/shapes/main-slider-shape-2.png' %}" alt="">
+                </div>
+                <div class="main-slider__shape-3">
+                    <img src="{% static 'images/shapes/main-slider-shape-3.png' %}" alt="">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="main-slider__content">
+                                <p class="main-slider__sub-title">Connecting Donors to Students in Need Across Universities!</p>
+                                <h2 class="main-slider__title">TUITIONASSIST <br> SYSTEM </h2>
+                                <div class="main-slider__btn-box">
+                                    <a href="#compaigns" class="thm-btn main-slider__btn"> 
+                                        Fund a Student</a>
+                                    <a href="{% url 'contact-us' %}" class="main-slider__btn-two">Contant Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- If we need navigation buttons -->
+        <div class="main-slider__nav">
+            <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                <i class="icon-right-arrow"></i>
+            </div>
+            <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                <i class="icon-right-arrow"></i>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--Main Slider End-->
+
+<!--Categories One Start-->
+<section class="categories-one">
+    <div class="container">
+        <div class="categories-one__top">
+            <div class="row">
+                <div class="col-xl-6 col-lg-7">
+                    <div class="categories-one__top-left">
+                        <div class="section-title text-left">
+                            <span class="section-title__tagline">Explore universities</span>
+                            <h2 class="section-title__title">Check Which University Intrest You</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="categories-one__backers ">
+                <div class="categories-one__backers-tagline">
+                    <p>Find it first on Qrowd.</p>
+                </div>
+                <div class="categories-one__backers-box">
+                    <div class="categories-one__backers-icon">
+                        <span class="icon-computer"></span>
+                    </div>
+                    <div class="categories-one__backers-content">
+                        <!-- <h3 class="count-text" data-stop="37400" data-speed="2000"></h3> -->
+                        <h3 class="odometer" data-count="37400">00</h3>
+                        <p>Universities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="categories-one__bottom">
+            <div class="categories-one__bottom-inner">
+                <div class="row">
+                    {% for university in universities %}
+                        <div class="col-xl-2 col-lg-4 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
+                            <a href="{% url 'universityDetails' university.id %}">
+                                <div class="categories-one__single">
+                                    <div class="categories-one__icon">
+                                        <span>
+                                            <img src="{{ university.university_logo.url }}" alt="" style="width: 100px; height: 100px;">
+                                        </span>
+                                    </div>
+                                    <h4 class="categories-one__title">{{ university.short_name }}</h4>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="changing-one__inner">
+                <a href="#" class="thm-btn">View More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Categories One End-->
+
+
+<!--Project Page One Start-->
+<section class="project-page-one mb-5" id="compaigns">
+    <div class="container">
+        <div class="project-one__top">
+            <div class="section-title text-center">
+                <span class="section-title__tagline">close the gap</span>
+                <h2 class="section-title__title text-capitalize">financially challenged university <br> students </h2>
+            </div>
+        </div>
+        <div class="row">
+            <!--Project One Single Start-->
+            {% for campaign in students_campaign %}
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <a href="{% url 'studentDetails' campaign.id %}" class="project-one__single">
+                    <div class="project-one__img-box">
+                        <div class="project-one__img">
+                            {% if campaign.user.profile_picture %}
+                            <img src="{{campaign.user.profile_picture.url}}" alt="" style="width: 100%; height: 300px;">
+                            {% else %}
+                            <img src="{% static 'images/User.jpg' %}" alt="" style="width: 100%; height: 40%;">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="project-one__content">
+                        <div class="project-one__tag">
+                            <p>{{campaign.student_university.short_name}}</p>
+                        </div>
+                        <h3 class="project-one__title"><a href="{% url 'studentDetails' campaign.id %}">{{campaign.user.full_name}}</a></h3>
+                        <div class="project-one__remaing">
+                            <div class="icon">
+                                <i class="fa fa-clock"></i>
+                            </div>
+                            <div class="text">
+                                <p>{{campaign.created_at|timesince:campaign.payment_deadline}} Remaining</p>
+                            </div>
+                        </div>
+                        <div class="progress-levels">
+                            <!--Skill Box-->
+                            {% comment %} <div class="progress-box">
+                                <div class="inner count-box">
+                                    <div class="text">Raised</div>
+                                    <div class="bar">
+                                        <div class="bar-innner">
+                                            <div class="skill-percent">
+                                                <span class="count-text" data-speed="3000" data-stop="70">0</span>
+                                                <span class="percent">%</span>
+                                            </div>
+                                            <div class="bar-fill" data-percent="70"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="project-one__goals">
+                            <p class="project-one__goals-one">Achieved:<span>&#8358;{{campaign.amount_raised}}</span></p>
+                            <p class="project-one__goals-one">Goal:<span>&#8358;{{campaign.financial_need}}</span></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            <!--Project One Single End-->
+            <br>
+            {% if students_campaign.count > 6 %}
+            <div class="changing-one__inner">
+                <a href="#" class="thm-btn">View All</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!--Project Page One End-->
+
+
+
+<!--Newsletter Start-->
+<section class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-7">
+                <div class="newsletter__left">
+                    <div class="section-title text-left">
+                        <span class="section-title__tagline">Subscribe to newsletter</span>
+                        <h2 class="section-title__title">Get our Complete Crowdfunding Guides</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-5">
+                <div class="newsletter__right">
+                    <form class="newsletter__form">
+                        <div class="newsletter__input-box">
+                            <input type="email" placeholder="Enter your email" name="email">
+                            <button type="submit" class="newsletter__btn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="checked-box">
+                        <input type="checkbox" name="skipper1" id="skipper" checked="">
+                        <label for="skipper"><span></span>I agree to all terms and policies of the
+                            company</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Newsletter End-->
+
+
+
+
+
+
+<!--Ready One Start-->
+<section class="ready-one">
+    <div class="container">
+        <div class="ready-one__inner">
+            <div class="ready-one-shape-1 float-bob-x">
+                <img src="assets/images/shapes/ready-one-shape-1.png" alt="">
+            </div>
+            <div class="ready-one__big-icon float-bob-y-2">
+                <span class="icon-fundraiser"></span>
+            </div>
+            <div class="ready-one__left">
+                <div class="icon">
+                    <span class="icon-fundraiser"></span>
+                </div>
+                <div class="content">
+                    <p>Your story starts from here</p>
+                    <h3>Ready to raise funds for idea?</h3>
+                </div>
+            </div>
+            <div class="ready-one__right">
+                <a href="#compaigns" class="thm-btn ready-one__btn">Make it Happen</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Ready One End-->
+
+{% endblock  %}

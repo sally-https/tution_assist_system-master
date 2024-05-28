@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-headerr-bg.jpg' %})">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Student Registration</li>
+            </ul>
+            <h2>Student's Registration Page</h2>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<section class="contact-one">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">Register</span>
+            <h2 class="section-title__title">Student Registration</h2>
+        </div>
+        <div class="login-register__warning text-danger">
+            <strong>Note</strong>: This registration page is for Students only.
+        </div>
+        
+        {% include 'includes/alerts.html' %}
+
+        <div class="contact-one__form-box">
+            <form method="post" action="{% url 'registerStudent' %}" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="first_name">Full Name</label>
+                            {{s_form.full_name}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="student_id">Student ID</label>
+                            {{s_form.student_id}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="university_id">Select University</label>
+                            {% render_field s_form.university class+="form-select form-select-lg" %}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="last_name">Gender</label>
+                            {% render_field s_form.gender class+="form-select form-select-lg" %}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="last_name">Profile Pictures</label>
+                            {{s_form.profile_picture}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="student_id">Phone Number</label>
+                            {{s_form.phone_number}}
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="contact-form__input-box">
+                            <label for="student_id">Address</label>
+                            {{s_form.address}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="email">Email Address</label>
+                            {{form.email}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="username">Username</label>
+                            {{form.username}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="password">Password</label>
+                            {{form.password}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="contact-form__input-box">
+                            <label for="confirm_password">Confirm Password</label>
+                            {{form.confirm_password}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="errorlist" style="list-style: none;">
+                        {% for field in form %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <li style="color: red;">{{error}}</li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <li style="color: red;">{{form.non_field_errors}}</li>
+                    </ul>
+
+                    <div class="col-xl-12">
+                        <div class="contact-form__btn-box">
+                            <button type="submit" class="thm-btn contact-form__btn">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock  %}
+

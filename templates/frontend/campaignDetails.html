@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><span>/</span></li>
+                <li>Campaign</li>
+            </ul>
+            <h2>{{student.user.full_name}} Campaign Details</h2>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<!--Project Details Top Start-->
+<section class="project-details-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-6">
+                <div class="project-details-top__left">
+                    <div class="project-details-top__img">
+                        {% if student.user.profile_picture %}
+                        <img src="{{student.user.profile_picture.url}}" alt="">
+                        {% else %}
+                        <img src="{% static 'images/User.jpg' %}" alt="">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6">
+                <div class="project-details-top__right">
+                    <div class="project-details-top__tag-address">
+                        <div class="project-details-top__address">
+                            <p><i class="fas fa-map-marker"></i>{{student.user.university}}</p>
+                        </div>
+                    </div>
+                    <h3 class="project-details-top__title">{{student.user.full_name}}</h3>
+                    <ul class="list-unstyled project-details-top__list">
+                        <li>
+                            <div class="project-details-top__list-content">
+                                <h3>&#8358;{{student.financial_need}}</h3>
+                                <p>Goal</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="project-details-top__list-content">
+                                <h3>&#8358;{{student.amount_raised}}</h3>
+                                <p>Achieved</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="project-details-top__list-content">
+                                <h3 class="text-capitalize">{{amount_left}}</h3>
+                                <p> Left</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="progress-levels">
+                        <!--Skill Box-->
+                       <div class="progress-box">
+                            <div class="inner count-box">
+        <div class="text">Raised</div>
+        <div class="bar">
+            <div class="bar-innner">
+                <div class="skill-percent">
+                    <span class="count-text" data-speed="3000" data-stop="{{ percentage|floatformat:0 }}">0</span>
+                    <span class="percent">%</span>
+                </div>
+                <div class="bar-fill" data-percent="{{ percentage|floatformat:0 }}"></div>
+            </div>
+        </div>
+    </div>
+                            </div>
+                    </div>
+                    <p class="project-details-top__goal"><span>Goal: </span>{{student.financial_need}} NAIRA</p>
+                    <p class="project-details-top__text">
+                        {{student.campaign_message}}
+                    </p>
+                    <div class="project-details-top__person">
+                        <div class="project-details-top__person-img">
+                            {% if student.student_university.university_logo %}
+                            <img src="{{student.student_university.university_logo.url}}" alt="">
+                            {% else %}
+                            <img src="assets/images/project/project-details-top-person-img-1.jpg" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="project-details-top__person-content">
+                            <h5><span>by </span>{{student.student_university.university_name}}</h5>
+                            <p>{{student.user.university_id.short_name}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    {% comment %} <div class="row">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="col-xl-12">
+                                <div class="contact-form__input-box">
+                                    <label>How Much do you Wish to Donate</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-5">
+                                <div class="contact-form__input-box">
+                                    <label>Enter Amount (&#8358;)</label>
+                                    <input type="number" placeholder="Enter Amount" name="amount">
+                                </div>
+                            </div>
+                            <div class="col-xl-7">
+                                <div class="contact-form__input-box">
+                                    <br>
+                                    <button type="submit" class="thm-btn contact-form__btn">Donate to this Student</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div> {% endcomment %}
+                    <div class="project-details-top__quantity-btn-social">
+                        <div class="project-details-top__btn-box">
+                            <a href="{% url 'initiate_payment' student.id %}" class="thm-btn project-details-top__btn">Donate to this
+                                Student</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Project Details Top End-->
+
+
+
+{% endblock  %}

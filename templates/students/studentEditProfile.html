@@ -1,0 +1,87 @@
+{% extends "students/student-base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block student_content %}
+
+<div class="col-xl-8 col-lg-7">
+    <span class="fs-4">Edit Profile</span>
+    <hr>
+    <div class="login-register__warning text-danger">
+        <strong>Note</strong>: Edit Profile
+    </div>
+    {% include 'includes/alerts.html' %}
+        
+    <div class="contact-one__form-box">
+        <form method="POST" action="{% url 'studentEditProfile' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-12">
+                    <label>Profile Picture</label>
+                    <div class="contact-form__input-box">
+                        {{profile_form.profile_picture}}
+                    </div>
+                    <label class="text-danger">{{ profile_form.profile_picture.errors }}</label>
+                </div>
+                <div class="col-xl-6">
+                    <label>Full Name</label>
+                    <div class="contact-form__input-box">
+                        {{profile_form.full_name}}
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <label>Student ID</label>
+                    <div class="contact-form__input-box">
+                        {{profile_form.student_id}}
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <label>University</label>
+                    <div class="contact-form__input-box">
+                        {% render_field profile_form.university class+="form-select form-select-lg" %}
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <label>Gender</label>
+                    <div class="contact-form__input-box">
+                        {% render_field profile_form.gender class+="form-select form-select-lg" %}
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <label>Phone Number</label>
+                    <div class="contact-form__input-box">
+                        {{profile_form.phone_number}}
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="contact-form__input-box">
+                        <label>Address</label>
+                        <div class="contact-form__input-box">
+                            {{profile_form.address}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="contact-form__btn-box">
+                        <button type="submit" class="thm-btn contact-form__btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% comment %} <form action="{% url 'studentEditProfile' %}" method="POST" enctype="multipart/form-data">
+        {% include 'includes/alerts.html' %}
+        <label class="text-danger">{{ profile_form.profile_picture.errors }}</label>
+        {% csrf_token %}
+    {{profile_form}}
+    {{student_form}}
+    <input type="submit" class="btn btn-success" value="Save"/>
+    </form> {% endcomment %}
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "students/student-base.html" %}
+{% load static %}
+
+
+{% block student_content %}
+<div class="col-xl-8 col-lg-7">
+    <span class="fs-4">Dashboard</span>
+    <hr>
+    {% include 'includes/alerts.html' %}
+    {% if student_campaign %}
+    <div class="events-list__inner">
+        <h5 class="event-details__details-box-title text-center">Dashboard Content</h5>
+        <div class="row g-6 mb-6">
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Amount Needed</span>
+                                <span class="h3 font-bold mb-0">&#8358;{{student_campaign.financial_need}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Amount Raised</span>
+                                <span class="h3 font-bold mb-0">&#8358;{{student_campaign.amount_raised}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Deadline</span>
+                                <span class="h3 font-bold mb-0">{{student_campaign.payment_deadline}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h5 class="event-details__details-box-title">Most recent Donations</h5>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for donation in student_donation %}
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{donation.full_name}}</td>
+                    <td>&#8358;{{donation.amount}}</td>
+                    {% if donation.verified == False %}
+                    <td class="text-danger">Faid</td>
+                    {% else %}
+                    <td class="text-success">Successful</td>
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

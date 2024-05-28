@@ -1,0 +1,27 @@
+{% comment %} {% load example %} {% endcomment %}
+  {{ wizard.management_form }}
+
+
+  {% for field in wizard.form %}
+  <label class="form-label">{{ field.label }}</label>
+  <div class="contact-form__input-box">
+    {{ field }}
+  </div>
+  {% endfor %}
+
+  <div class="login-register__warning text-danger">
+    <strong>Forgot Password? </strong> 
+    <a style="color:#fe7f4c;font-size:16px;" href="#">Reset it</a>
+  </div>
+  
+<ul class="errorlist" style="list-style: none;">
+  {% for field in form %}
+      {% if field.errors %}
+          {% for error in field.errors %}
+              <li style="color: red;">{{error}}</li>
+          {% endfor %}
+      {% endif %}
+  {% endfor %}
+
+  <li style="color: red;">{{form.non_field_errors}}</li>
+</ul>

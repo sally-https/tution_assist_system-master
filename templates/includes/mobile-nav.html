@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <!-- /.mobile-nav__overlay -->
+    <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+        <div class="logo-box">
+            <a href="index.html" aria-label="logo image"><img src="{% static 'images/resources/logo-1-new.png' %}" width="143" alt=""></a>
+        </div>
+        <!-- /.logo-box -->
+        <div class="mobile-nav__container"></div>
+        <!-- /.mobile-nav__container -->
+
+        <ul class="mobile-nav__contact list-unstyled">
+            {% if request.user.is_authenticated %}
+            <li style="background: #07847f;color: #fff;">
+                <a class="btn text-light" href="{% url 'myAccount' %}">
+                    <i class="icon-account-1"></i>
+                    My Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="thm-btn main-menu__btn" href="{% url 'logout' %}">
+                    <i class="icon-account-1"></i>
+                    Logout
+                </a>
+            </li>
+            {% else %}
+            <li style="background: #fe7f4c;">
+                <a class="btn text-light" href="{% url 'registerStudent' %}">
+                    Register as Student
+                </a>
+            </li>
+            <li class="btn" style="background: #07847f;color: #fff;">
+                <a href="{% url 'registerContributor' %}" style="color: #fff;">
+                    Register as Contributor
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'two_factor:login' %}" class="thm-btn main-menu__btn">
+                    <i class="icon-account"></i> 
+                    Login
+                </a>
+            </li>
+
+            
+            {% endif %}
+            <li>
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:needhelp@packageName__.com">needhelp@qrowd.com</a>
+            </li>
+            <li>
+                <i class="fa fa-phone-alt"></i>
+                <a href="tel:666-888-0000">666 888 0000</a>
+            </li>
+        </ul><!-- /.mobile-nav__contact -->
+        <div class="mobile-nav__top">
+            <div class="mobile-nav__social">
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="#" class="fab fa-pinterest-p"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div><!-- /.mobile-nav__social -->
+        </div><!-- /.mobile-nav__top -->
+
+
+
+    </div>
+    <!-- /.mobile-nav__content -->
+</div>

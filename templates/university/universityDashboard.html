@@ -1,0 +1,201 @@
+{% extends "university/university-base.html" %}
+
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Welcome {{university.university_name}}!</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'universityDashboard' %}">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% include 'includes/alerts.html' %}
+
+
+        <div class="row">
+            <a href="{% url 'universityStudents' %}" class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-two w-100">
+                    <div class="card-body">
+                        <div class="db-widgets d-flex justify-content-between align-items-center">
+                            <div class="db-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="db-info">
+                                <h3>{{all_students.count}}</h3>
+                                <h6>Number of Students</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'universityStudents' %}" class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-five w-100">
+                    <div class="card-body">
+                        <div class="db-widgets d-flex justify-content-between align-items-center">
+                            <div class="db-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="db-info">
+                                <h3>{{all_campaign.count}}</h3>
+                                <h6>Student(s) Campaign</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'studentCampaign' %}"  class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-six w-100">
+                    <div class="card-body">
+                        <div class="db-widgets d-flex justify-content-between align-items-center">
+                            <div class="db-icon">
+                                <i class="fas fa-comment-dollar"></i>
+                            </div>
+                            <div class="db-info">
+                                <h3>&#8358; {{total_amount_needed.financial_need__sum}}</h3>
+                                <h6>Total Amount Needed</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'universityDonations' %}"  class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-seven w-100">
+                    <div class="card-body">
+                        <div class="db-widgets d-flex justify-content-between align-items-center">
+                            <div class="db-icon">
+                                <i class="fas fa-comment-dollar"></i>
+                            </div>
+                            <div class="db-info">
+                                <h3>&#8358; {{total_donation.amount__sum}}</h3>
+                                <h6>Amount Raised</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{% url 'students-awaiting-approval' %}" class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-seven w-100">
+                    <div class="card-body">
+                        <div class="db-widgets d-flex justify-content-between align-items-center">
+                            <div class="db-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="db-info">
+                                <h3>{{students_awaiting_approve.count}}</h3>
+                                <h6>Student(s) Awaiting Approval</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{% url 'campaign-awaiting-approval' %}" class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-two w-100">
+                    <div class="card-body">
+                        <div class="db-widgets d-flex justify-content-between align-items-center">
+                            <div class="db-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="db-info">
+                                <h3>{{campaign_awaiting_approve.count}}</h3>
+                                <h6>Student(s) Campaign Awaiting Approval</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+           
+        </div>
+
+
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-9">
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-xl-12 d-flex">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="card-title">Recent Donations</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="float-right view-link"><a href="{% url 'universityDonations' %}">View All</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-3 pb-3">
+                                <div class="table-responsive lesson">
+                                    <table class="table table-center">
+                                        <tbody>
+                                            {% for university_donation in university_donations %}
+                                            <tr>
+                                                <td>
+                                                    <div class="date">
+                                                        <b>Donor</b>
+                                                        <p>{{university_donation.user}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="date">
+                                                        <b>Amount Donated</b>
+                                                        <p>{{university_donation.amount}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="date">
+                                                        <b>Donation For</b>
+                                                        <p>{{university_donation.students.user.full_name}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="date">
+                                                        <b>Date of Donation</b>
+                                                        <p>{{university_donation.created_at|date:"jS F Y"}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="date">
+                                                        <b>Status</b>
+                                                        <p><span class="badge badge-success p-2">Completed</span></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-info text-white">Details</a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-3 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                                <h5 class="card-title">Calendar</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="calendar-doctor" class="calendar-container"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}

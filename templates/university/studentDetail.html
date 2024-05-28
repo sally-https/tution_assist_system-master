@@ -1,0 +1,109 @@
+{% extends "university/university-base.html" %}
+
+{% block title %}Student Detail{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Student Details</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Student</a></li>
+                    <li class="breadcrumb-item active">Student Details</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-info">
+                        <h4>About Student</h4>
+                        <div class="media mt-3">
+                            <img src="{{ student.profile_picture.url }}" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <ul>
+                                    <li>
+                                        <span class="title-span">Student ID : </span>
+                                        <span class="info-span">{{ student.student_id}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title-span">Full Name : </span>
+                                        <span class="info-span">{{ student.full_name}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title-span">School : </span>
+                                        <span class="info-span">{{ student.university}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title-span">Mobile : </span>
+                                        <span class="info-span">{{student.phone_number}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title-span">Email : </span>
+                                        <span class="info-span"><a
+                                                href="#">{{student.user.email}}</a></span>
+                                    </li>
+                                    <li>
+                                        <span class="title-span">Gender : </span>
+                                        <span class="info-span">{{student.gender}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title-span">Address : </span>
+                                        <span class="info-span">{{student.address}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% if student_campaign %}
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <h4>Campaign Detail</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="row follow-sec">
+                            <div class="col-md-4 mb-3">
+                                <div class="blue-box">
+                                    <h3>{{student_campaign.financial_need}}</h3>
+                                    <p>Amount Needed</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="blue-box">
+                                    <h3>{{student_campaign.amount_raised}}</h3>
+                                    <p>Amount Raised</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="blue-box">
+                                    <h3> {{amount_left}} </h3>
+                                    <p>Amount Left</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <h5>Campaign Message</h5>
+                                <p>{{student_campaign.campaign_message}}</p>
+                            </div>
+                        </div>
+                        {% else %}
+                            <h4 class="text-uppercase mt-4">No ungoing Campaign for this Student</h4>
+                            <a href="{% url 'add-student-campaign' student.id %}" class="btn btn-primary">Create Campaign</a>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "two_factor/_base.html" %}
+{% load static %}
+
+
+
+{% block content_wrapper %}
+<!--Page Header Start-->
+<section class="page-header">
+  <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-head-bg.jpg' %})">
+  </div>
+  <div class="page-header-shape-1 float-bob-x">
+      <img src="{% static 'images/shapes/page-header-shape-1.png' %}" alt="">
+  </div>
+  <div class="page-header-shape-2 float-bob-y">
+      <img src="{% static 'images/shapes/page-header-shape-2.png' %}" alt="">
+  </div>
+  <div class="page-header-shape-3 float-bob-x">
+      <img src="{% static 'images/shapes/page-header-shape-3.png' %}" alt="">
+  </div>
+  <div class="container">
+      <div class="page-header__inner">
+          <ul class="thm-breadcrumb list-unstyled">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><span>/</span></li>
+              <li>Login</li>
+          </ul>
+          <h2>Login Page</h2>
+      </div>
+  </div>
+</section>
+<!--Page Header End-->
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
